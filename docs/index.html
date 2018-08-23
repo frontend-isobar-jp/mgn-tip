@@ -23,6 +23,64 @@
 		main pre mark { background: rgba(236,69,0,0.2); font-weight: bold; display: inline-block; padding: 0 3px; }
 		footer { padding: 20px; background: #F7F7F7; }
 		footer p { font-size: 0.75em; }
+
+		.j-tip a {
+			padding: 15px 40px;
+			display: inline-block;
+			background: #999;
+			color: #FFF;
+			line-height: 1;
+			box-shadow: 0px 0px 5px 0 rgba(0,0,0,0.4);
+			text-align: center;
+			border-radius: 2px;
+			text-decoration: none;
+		}
+
+		.j-tip_detail {
+			padding: 8px 8px 7px;
+			border: 1px solid #000;
+			background: #FFF;
+			border-radius: 2px;
+			z-index: 10;
+			line-height: 1;
+		}
+		.j-tip_detail:before {
+			content: "";
+			display: block;
+			width: 0;
+			height: 0;
+			position: absolute;
+		}
+		.j-tip_detail.left:before {
+			border-bottom: 4px solid transparent;
+			border-left: 6px solid #000;
+			border-top: 4px solid transparent;
+			top: 50%;
+			right: 0;
+			margin: -4px -6px 0 0;
+		}
+		.j-tip_detail.top:before {
+			border-top: 6px solid #000;
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			bottom: -6px;
+			left: 10px;
+		}
+		.j-tip_detail.right:before {
+			border-bottom: 4px solid transparent;
+			border-right: 6px solid #000;
+			border-top: 4px solid transparent;
+			top: 50%;
+			left: 0;
+			margin: -4px 0 0  -6px;
+		}
+		.j-tip_detail.bottom:before {
+			border-bottom: 6px solid #000;
+			border-left: 4px solid transparent;
+			border-right: 4px solid transparent;
+			top: -6px;
+			left: 10px;
+		}
 	</style>
 
 </head>
@@ -36,11 +94,113 @@
 
 		<section>
 			<h2>Default</h2>
-<div><pre data-type="javascript"><code>
+
+			<!-- left -->
+            <div class="j-tip">
+                <a class="j-tip_btn" data-direction="left">left</a>
+                <div class="j-tip_detail">
+                    LEFT
+                </div>
+            </div>
+
+            <!-- top -->
+            <div class="j-tip">
+                <a class="j-tip_btn" data-direction="top">top</a>
+                <div class="j-tip_detail">
+                    TOP
+                </div>
+            </div>
+
+            <!-- right -->
+            <div class="j-tip">
+                <a class="j-tip_btn" data-direction="right">right</a>
+                <div class="j-tip_detail">
+                    RIGHT
+                </div>
+            </div>
+
+            <!-- bottom -->
+            <div class="j-tip">
+                <a class="j-tip_btn" data-direction="bottom">bottom</a>
+                <div class="j-tip_detail">
+                    BOTTOM
+                </div>
+            </div>
+
+<div style="margin-top: 40px;"><pre data-type="javascript"><code>
+let tip = new mgnTip(
+    "<mark>.j-tip</mark>",
+    {
+        fadeSpeed: 100
+    }
+);
+tip.ShowEnd = function(){
+    console.log("ShowEnd");
+};
 </code></pre></div>
 <div><pre data-type="HTML"><code>
+&lt;div class="<mark>j-tip</mark>"&gt;
+    &lt;a class="j-tip_btn" data-direction="top"&gt;top&lt;/a&gt;
+    &lt;div class="j-tip_detail"&gt;TOP&lt;/div&gt;
+&lt;/div&gt;
 </code></pre></div>
-
+<div><pre data-type="css"><code>
+.j-tip a {
+	padding: 15px 40px;
+	display: inline-block;
+	background: #999;
+	color: #FFF;
+	line-height: 1;
+	text-align: center;
+	border-radius: 2px;
+	text-decoration: none;
+}
+.j-tip_detail {
+	padding: 8px 8px 7px;
+	border: 1px solid #000;
+	background: #FFF;
+	border-radius: 2px;
+	z-index: 10;
+	line-height: 1;
+}
+.j-tip_detail:before {
+	content: "";
+	display: block;
+	width: 0;
+	height: 0;
+	position: absolute;
+}
+.j-tip_detail.left:before {
+	border-bottom: 4px solid transparent;
+	border-left: 6px solid #000;
+	border-top: 4px solid transparent;
+	top: 50%;
+	right: 0;
+	margin: -4px -6px 0 0;
+}
+.j-tip_detail.top:before {
+	border-top: 6px solid #000;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	bottom: -6px;
+	left: 10px;
+}
+.j-tip_detail.right:before {
+	border-bottom: 4px solid transparent;
+	border-right: 6px solid #000;
+	border-top: 4px solid transparent;
+	top: 50%;
+	left: 0;
+	margin: -4px 0 0  -6px;
+}
+.j-tip_detail.bottom:before {
+	border-bottom: 6px solid #000;
+	border-left: 4px solid transparent;
+	border-right: 4px solid transparent;
+	top: -6px;
+	left: 10px;
+}
+</code></pre></div>
 
 		</section>
 
